@@ -30,9 +30,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: FlatButton(
               onPressed: () => {
-                setState(() {
-                  this.leftDiceCount = Random().nextInt(6) + 1;
-                })
+                this.changedDiceFaced()
               },
               child: Image.asset('assets/images/dice$leftDiceCount.png'),
             ),
@@ -40,9 +38,7 @@ class _DicePageState extends State<DicePage> {
           Expanded(
             child: FlatButton(
               onPressed: () => {
-                setState(() {
-                  this.rightDiceCount = Random().nextInt(6) + 1;
-                })
+                this.changedDiceFaced()
               },
               child: Image.asset('assets/images/dice$rightDiceCount.png'),
             ),
@@ -51,37 +47,11 @@ class _DicePageState extends State<DicePage> {
       ),
     );
   }
-}
 
-// class DicePage extends StatelessWidget {
-//   int leftDiceCount = 1;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: Row(
-//         children: <Widget>[
-//           Expanded(
-//             child: FlatButton(
-//               onPressed: () => {
-//                 print("Click 1")
-//               },
-//               child: Image.asset('assets/images/dice$leftDiceCount.png'),
-//             ),
-//           ),
-//           Expanded(
-//             child: FlatButton(
-//               onPressed: () => {
-//                 print("Click 2")
-//               },
-//               child: Image.asset('assets/images/dice1.png'),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-//
-//   changeLeftDice() {
-//   }
-// }
+  void changedDiceFaced() {
+    setState(() {
+      this.leftDiceCount = Random().nextInt(6) + 1;
+      this.rightDiceCount = Random().nextInt(6) + 1;
+    });
+  }
+}
