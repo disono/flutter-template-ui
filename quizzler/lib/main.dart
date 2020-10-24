@@ -1,0 +1,100 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(Quizzler());
+}
+
+class Quizzler extends StatefulWidget {
+  @override
+  _QuizzlerState createState() => _QuizzlerState();
+}
+
+class _QuizzlerState extends State<Quizzler> {
+
+  List<Widget> scoreKeeper = [];
+  List<String> questions = [
+    'You can lead?',
+    'Are you alien?',
+    'A slug\'s blood is green.',
+    'This is where the question text will go.'
+  ];
+
+  int questionNumber = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.grey.shade900,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Center(
+                  child: Text(
+                    questions[questionNumber],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: FlatButton(
+                  textColor: Colors.white,
+                  color: Colors.green,
+                  child: Text(
+                    'True',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (this.questionNumber < this.questions.length - 1) {
+                        setState(() {
+                          this.questionNumber++;
+                        });
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: FlatButton(
+                  color: Colors.red,
+                  child: Text(
+                    'False',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onPressed: () {
+                    //The user picked false.
+                  },
+                ),
+              ),
+            ),
+            Row(
+              children: this.scoreKeeper,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
