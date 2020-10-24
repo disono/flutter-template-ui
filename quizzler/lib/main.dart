@@ -18,6 +18,11 @@ class _QuizzlerState extends State<Quizzler> {
     'A slug\'s blood is green.',
     'This is where the question text will go.'
   ];
+  List<bool> answers = [
+    true,
+    false,
+    true
+  ];
 
   int questionNumber = 0;
 
@@ -62,6 +67,13 @@ class _QuizzlerState extends State<Quizzler> {
                   onPressed: () {
                     setState(() {
                       if (this.questionNumber < this.questions.length - 1) {
+                        bool correctAnswer = answers[this.questionNumber];
+                        if (correctAnswer) {
+
+                        } else {
+
+                        }
+
                         setState(() {
                           this.questionNumber++;
                         });
@@ -84,7 +96,20 @@ class _QuizzlerState extends State<Quizzler> {
                     ),
                   ),
                   onPressed: () {
-                    //The user picked false.
+                    setState(() {
+                      if (this.questionNumber < this.questions.length - 1) {
+                        bool correctAnswer = answers[this.questionNumber];
+                        if (!correctAnswer) {
+
+                        } else {
+
+                        }
+
+                        setState(() {
+                          this.questionNumber++;
+                        });
+                      }
+                    });
                   },
                 ),
               ),
