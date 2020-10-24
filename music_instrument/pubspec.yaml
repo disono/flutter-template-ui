@@ -54,6 +54,12 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/audio/note1.wav
+    - assets/audio/note2.wav
+    - assets/audio/note3.wav
+    - assets/audio/note4.wav
+    - assets/audio/note5.wav
+    - assets/audio/note6.wav
+    - assets/audio/note7.wav
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
