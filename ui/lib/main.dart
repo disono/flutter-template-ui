@@ -6,11 +6,8 @@ class MainUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF0A0E21),
-        scaffoldBackgroundColor: Color(0xFF0A0E21),
-      ),
-      home: InputPage(),
+      title: 'Flutter Tutorial',
+      home: TutorialHome(),
     );
   }
 }
@@ -33,10 +30,75 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: <Widget>[
+                Row(
+                  children: [
+                    BlueBox(),
+                    BlueBox(),
+                    BlueBox(),
+                  ],
+                )
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BlueBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        border: Border.all(),
+      ),
+    );
+  }
+}
+
+class TutorialHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Scaffold is a layout for the major Material Components.
+    return Scaffold(
+      // body is the majority of the screen.
+      body: Center(
+        child: Row(
+          children: [
+            ElevatedButton(
+              child: Text('Open route'),
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                    (e) => false);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SecondRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Second Route"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text('Go back!'),
+        ),
       ),
     );
   }
